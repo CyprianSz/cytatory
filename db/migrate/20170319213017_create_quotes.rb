@@ -8,6 +8,8 @@ class CreateQuotes < ActiveRecord::Migration[5.0]
       t.boolean  :accepted
       t.string   :source
       t.integer  :points
+
+      t.timestamps
     end
   end
 end
