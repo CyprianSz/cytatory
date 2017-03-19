@@ -1,0 +1,7 @@
+<div>
+  <h4>Autor: <%= comment.author_name %></h4>
+  <p><%= comment.body %></p>
+  <p>Utworzony: ZAPODAĆ TUTAJ JAKIŚ KOD </p>
+  <%= link_to "Edytuj", edit_quote_comment_path(comment) %><br>
+  <%= link_to "Usuń", quote_comment_path(comment), method: :delete, data: {confirm: "Na pewno ?"} %>
+</div>

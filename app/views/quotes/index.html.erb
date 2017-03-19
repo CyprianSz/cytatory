@@ -1,0 +1,11 @@
+<% provide(:title, "Spis Cytatorów") %>
+<h1>Spis Cytatorów:</h1>
+
+<% @quotes.each do |quote| %>
+  <li>
+    <% name = "#{quote.fake_author} czy #{quote.true_author}" %>
+    <%= link_to name, quote_path(quote) %><br>
+    <%= link_to "Usuń", quote_path(quote), method: :delete, data: {confirm: "Na pewno ?"} %>
+    <%= link_to "Edytuj", edit_quote_path(quote) %>
+  </li>
+<% end %>

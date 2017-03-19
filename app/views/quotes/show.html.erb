@@ -1,0 +1,15 @@
+<% cuted_quote = @quote.sentence[0..15] %>
+<% provide(:title, "#{cuted_quote}") %>
+
+<h1><%= @quote.sentence %></h1>
+<p><%= @quote.true_author %></p>
+<p><%= @quote.fake_author %></p>
+
+<h3>Dodaj komentarz</h3>
+
+<%= render partial: 'comments/form' %>
+
+<h3>Komentarze: (<%= @quote.comments.size %>)</h3>
+<%= render partial: 'quotes/comment', collection: @quote.comments %>
+
+<br><%= link_to "Powrót do cytatów", quotes_path %><br>
