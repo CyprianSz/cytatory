@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
 
     @comment.save
 
-    flash.notice = "#{@comment.author_name} - Twój komentarz utworzony pomyślnie."
+    flash.notice = "#{@comment.author} - Twój komentarz utworzony pomyślnie."
 
     redirect_to quote_path(@comment.quote)
   end
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
 
-    flash.notice = "#{@comment.author_name} - Twój komentarz edytowany pomyślnie."
+    flash.notice = "#{@comment.author} - Twój komentarz edytowany pomyślnie."
 
     redirect_to quote_path(@comment.quote)
   end
@@ -32,12 +32,12 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:quote_id])
     @comment.destroy
 
-    flash.notice = "#{@comment.author_name} - Twój komentarz został usunięty."
+    flash.notice = "#{@comment.author} - Twój komentarz został usunięty."
 
     redirect_to quote_path(@comment.quote)
   end
 
   def comment_params
-    params.require(:comment).permit(:author_name, :body)
+    params.require(:comment).permit(:author, :body)
   end
 end

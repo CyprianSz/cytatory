@@ -10,33 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170319144446) do
+ActiveRecord::Schema.define(version: 20170319211234) do
 
   create_table "comments", force: :cascade do |t|
-    t.text     "body"
+    t.string   "author"
     t.integer  "quote_id"
+    t.integer  "user_id"
+    t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
-    t.index ["quote_id"], name: "index_comments_on_quote_id"
   end
 
   create_table "quotes", force: :cascade do |t|
-    t.text     "sentence"
-    t.string   "true_author"
-    t.string   "fake_author"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.boolean  "accepted"
-    t.string   "source"
-    t.integer  "user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.text    "sentence"
+    t.string  "true_author"
+    t.string  "fake_author"
+    t.boolean "accepted"
+    t.string  "source"
+    t.integer "points"
   end
 
 end
