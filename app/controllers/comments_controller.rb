@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  include CommentsHelper
+
   def show
     @comment = Comment.find(params[:quote_id])
   end
@@ -35,9 +37,5 @@ class CommentsController < ApplicationController
     flash.notice = "#{@comment.author} - Twój komentarz został usunięty."
 
     redirect_to quote_path(@comment.quote)
-  end
-
-  def comment_params
-    params.require(:comment).permit(:author, :body)
   end
 end

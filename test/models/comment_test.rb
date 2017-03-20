@@ -1,7 +1,13 @@
 require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+=begin
+  def setup 
+    @comment = Comment.new(author: "Cyprian", body: "Jakiś testowy tekścik.")
+  end
+
+  test "should be valid" do 
+    assert @comment.valid?
+  end
+=end
 end
