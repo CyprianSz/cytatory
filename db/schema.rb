@@ -10,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320213023) do
+ActiveRecord::Schema.define(version: 20170404091411) do
 
   create_table "comments", force: :cascade do |t|
-    t.string   "author"
-    t.integer  "quote_id"
-    t.integer  "user_id"
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "quote_id"
+    t.string   "author"
+    t.index ["quote_id"], name: "index_comments_on_quote_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "quotes", force: :cascade do |t|
-    t.integer  "user_id"
     t.text     "sentence"
     t.string   "true_author"
     t.string   "fake_author"
@@ -31,6 +32,8 @@ ActiveRecord::Schema.define(version: 20170320213023) do
     t.integer  "points"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
