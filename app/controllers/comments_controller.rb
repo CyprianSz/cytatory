@@ -13,12 +13,12 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.quote_id = params[:quote_id]
-
-    @comment.save
-
-    flash.notice = "#{@comment.author} - Twój komentarz utworzony pomyślnie."
-
-    redirect_to quote_path(@comment.quote)
+    if @comment.save
+      flash.notice = "#{@comment.author} - Twój komentarz utworzony pomyślnie."
+      redirect_to quote_path(@comment.quote)
+    else
+      redirect_to quote_path(params[:quote_id])
+    end
   end
 
   def update

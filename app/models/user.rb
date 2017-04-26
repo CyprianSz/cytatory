@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :quotes
-  has_many :comments
+  #has_many :quotes
+  #has_many :comments
 
   before_save { email.downcase! }
   validates :name,      presence: true, length: { in: 3..20 }

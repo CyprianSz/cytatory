@@ -17,11 +17,12 @@ class QuotesController < ApplicationController
 
   def create
     @quote = Quote.new(quote_params)
-    @quote.save
-
-    flash.notice = "Cytat \"#{@quote.sentence}\" utworzony pomyślnie."
-
-    redirect_to quote_path(@quote)
+    if @quote.save
+      flash.notice = "Cytat \"#{@quote.sentence}\" utworzony pomyślnie."
+      redirect_to quote_path(@quote)
+    else
+      render :new
+    end
   end
 
   def destroy
