@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
       flash.notice = "#{@comment.author} - Twój komentarz utworzony pomyślnie."
       redirect_to quote_path(@comment.quote)
     else
-      redirect_to quote_path(params[:quote_id])
+      redirect_to :back
     end
   end
 
