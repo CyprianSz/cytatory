@@ -1,8 +1,14 @@
 <%= form_for(@quote) do |f| %>
-  <ul>
-  <% @quote.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
+  <% if @quote.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @quote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
+
   </ul>
 
   <p>
