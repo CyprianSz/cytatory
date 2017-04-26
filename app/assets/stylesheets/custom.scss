@@ -4,6 +4,8 @@
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
+$light-red: #ffe6e6;
+$dark-red: #800000;
 
 /* universal */
 
@@ -95,5 +97,10 @@ footer {
       margin-left: 15px;
     }
   }
+}
 
+#error_explanation {
+  border: 2px solid $dark-red;
+  background-color: $light-red;
+  display: table;
 }
